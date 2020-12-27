@@ -46,7 +46,6 @@
             <hr>
         </div>
 
-        
         <div class="container">
             <h2 id="heading2">LIVE DATA SCRAPING FROM</h2>
             <div class="row" id="services">
@@ -55,7 +54,7 @@
                         <h2>Arbatunity</h2>
                     </div>
                     <div class="col-12 col-md-11" id="values">
-    
+
                     </div>
                 </div>
                 <div class="col-lg-5" id="service">
@@ -63,12 +62,11 @@
                         <h2>Ovex</h2>
                     </div>
                     <div class="col-12 col-md-11" id="values1">
-    
+
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div class="col-12 col-md-12 p-5">
             <button onclick="deleteValues()" id="dltButton">Destroy Data</button>
@@ -76,7 +74,6 @@
 
         <audio src="others/Tune.mp3" id="audio" controls style="display: none;"></audio>
     </div>
-
 
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
 
@@ -86,21 +83,22 @@
 
     <script>
         var firebaseConfig = {
-            apiKey: "AIzaSyAJSJQW_nEEB6021yNM_Ed9_uhf0bt2dF8",
-            authDomain: "assignment-f6703.firebaseapp.com",
-            databaseURL: "https://assignment-f6703.firebaseio.com",
-            projectId: "assignment-f6703",
-            storageBucket: "assignment-f6703.appspot.com",
-            messagingSenderId: "212205341324",
-            appId: "1:212205341324:web:20aa38a103a09d9dc749a9",
-            measurementId: "G-0LCQML7QM1"
+            apiKey: "AIzaSyDgm1nCubjtFnec2CyJezEJW4gGP4HjnPE",
+            authDomain: "cryptotracker-2021.firebaseapp.com",
+            databaseURL: "https://cryptotracker-2021-default-rtdb.firebaseio.com",
+            projectId: "cryptotracker-2021",
+            storageBucket: "cryptotracker-2021.appspot.com",
+            messagingSenderId: "655100349264",
+            appId: "1:655100349264:web:8f2a818db1195a5867ba55",
+            measurementId: "G-WMCPZT75G6"
         };
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
     </script>
 
-    <script src="scripts/firebase-messaging.js"></script>
 
+    <!-- <script src="firebase-messaging-sw.js"></script> -->
+    <script src="scripts/firebase-messaging.js"></script>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="scripts/push.min.js"></script>
     <script src="scripts/serviceWorker.min.js"></script>

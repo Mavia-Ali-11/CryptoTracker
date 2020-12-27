@@ -3,7 +3,7 @@ function setValues() {
         var arbatunityValue = parseInt(Math.random() * 100);
         var ovexValue = parseInt(Math.random() * 100);
         addValue(arbatunityValue, ovexValue);
-    }, 60000);
+    }, 5000);
 }
 
 setValues();
@@ -57,6 +57,8 @@ function addMax1(maxValue1) {
 }
 
 function addValue(arbatunityValue, ovexValue) {
+    notify1();
+    notify2();
     var key = firebase.database().ref('Crypto Values').push().key;
     var data = {
         arbatunity: arbatunityValue,
@@ -74,23 +76,11 @@ function getValues() {
         values.scrollTop = values.scrollHeight;
         var currentValue = data.val().arbatunity;
         window.a = currentValue;
-        example();
         notify1();
     });
 }
 
 getValues();
-
-
-function example() {
-    const messaging = firebase.messaging();
-    messaging.requestPermission().then(function () {
-        return messaging.getToken();
-    }).then(function (token) {
-        firebase.database().ref("fcmToken").set({ token_id: token });
-    })
-}
-
 
 function getValues1() {
     firebase.database().ref('Crypto Values').on('child_added', function (data) {
@@ -126,62 +116,34 @@ getMax();
 function notify1() {
     if (a > b) {
         var audio = document.getElementById("audio");
-        firebase.database().ref('fcmToken').once('value').then(function (data) {
-            audio.play();
-            $.ajax({
-                url: 'https://fcm.googleapis.com/fcm/send',
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'key=AAAAMWhsiow:APA91bE7--DLOVqFMDvV_ehoItw1vy0x_KYqZp3BiwUutOKSDKr-sbcyqUy2ibAlXVIATD7DKqsMUV36rAkTQmMOWHilxpY4aVewpYNbHVyGfffwEdtATnBtkNbyapdJjP7QNCqgsS-9'
-                },
-                data: JSON.stringify({
-                    'to': data.val().token_id, 'data': { 'message': "Looks like the rates at arbatunity exceeds the maximum limit that you had set." }
-                })
-            })
-        })
+        audio.play();
 
-        // Push.create("CRYPTO CURRENCY RATES", {
-        //         body: "Looks like the rates at arbatunity exceeds the maximum limit that you had set.",
-        //         icon: 'others/bitcoin.png',
-        //         timeout: 6000,
-        //         onClick: function () {
-        //             window.focus();
-        //             this.close();
-        //         }
-        //     });
-
-
+        Push.create("CRYPTO CURRENCY RATES", {
+                body: "Looks like the rates at arbatunity exceeds the maximum limit that you had set.",
+                icon: 'others/bitcoin.png',
+                timeout: 6000,
+                onClick: function () {
+                    window.focus();
+                    this.close();
+                }
+            });
     }
 }
 
 function notify2() {
     if (d > c) {
         var audio = document.getElementById("audio");
-        firebase.database().ref('fcmToken').once('value').then(function (data) {
-            audio.play();
-            $.ajax({
-                url: 'https://fcm.googleapis.com/fcm/send',
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'key=AAAAMWhsiow:APA91bE7--DLOVqFMDvV_ehoItw1vy0x_KYqZp3BiwUutOKSDKr-sbcyqUy2ibAlXVIATD7DKqsMUV36rAkTQmMOWHilxpY4aVewpYNbHVyGfffwEdtATnBtkNbyapdJjP7QNCqgsS-9'
-                },
-                data: JSON.stringify({
-                    'to': data.val().token_id, 'data': { 'message': "Looks like the rates at ovex exceeds the maximum limit that you had set." }
-                }),
-            })
-        })
+        audio.play();
        
-        // Push.create("CRYPTO CURRENCY RATES", {
-        //     body: "Looks like the rates at ovex exceeds the maximum limit that you had set.",
-        //     icon: 'others/bitcoin.png',
-        //     timeout: 6000,
-        //     onClick: function () {
-        //         window.focus();
-        //         this.close();
-        //     }
-        // });
+        Push.create("CRYPTO CURRENCY RATES", {
+            body: "Looks like the rates at ovex exceeds the maximum limit that you had set.",
+            icon: 'others/bitcoin.png',
+            timeout: 6000,
+            onClick: function () {
+                window.focus();
+                this.close();
+            }
+        });
     }
 }
 
@@ -192,5 +154,3 @@ function deleteValues() {
     values.innerHTML = "";
     values1.innerHTML = "";
 }
-
-
