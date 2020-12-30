@@ -8,6 +8,16 @@ function setValues() {
 
 setValues();
 
+function addValue(arbatunityValue, ovexValue) {
+    var key = firebase.database().ref('Crypto Values').push().key;
+    var data = {
+        arbatunity: arbatunityValue,
+        ovex: ovexValue,
+    }
+    firebase.database().ref('Crypto Values/' + key).set(data);
+    return data;
+}
+
 function saveValue() {
     var maxValue = document.getElementById("maxValue");
     if (maxValue.value == "") {
@@ -56,23 +66,10 @@ function addMax1(maxValue1) {
     return data;
 }
 
-function addValue(arbatunityValue, ovexValue) {
-    notify1();
-    notify2();
-    var key = firebase.database().ref('Crypto Values').push().key;
-    var data = {
-        arbatunity: arbatunityValue,
-        ovex: ovexValue,
-        key: key
-    }
-    firebase.database().ref('Crypto Values/' + key).set(data);
-    return data;
-}
-
 function getValues() {
     firebase.database().ref('Crypto Values').on('child_added', function (data) {
         var values = document.getElementById("values");
-        values.innerHTML += `<li>Current rate: ${data.val().arbatunity}</li><hr>`;
+        values.innerHTML += `<li>Profit % ${data.val().arbatunity}</li><hr>`;
         values.scrollTop = values.scrollHeight;
         var currentValue = data.val().arbatunity;
         window.a = currentValue;
@@ -85,10 +82,11 @@ getValues();
 function getValues1() {
     firebase.database().ref('Crypto Values').on('child_added', function (data) {
         var values1 = document.getElementById("values1");
-        values1.innerHTML += `<li>Current rate: ${data.val().ovex}</li><hr>`;
+        values1.innerHTML += `<li>Profit % ${data.val().ovex}</li><hr>`;
         values1.scrollTop = values1.scrollHeight;
         var currentValue1 = data.val().ovex;
         window.d = currentValue1;
+        getMax();
         notify2();
     });
 }
@@ -98,14 +96,14 @@ getValues1();
 function getMax() {
     firebase.database().ref('Arbatunity Max').on('child_added', function (data) {
         var valueSaved = document.getElementById("valueSaved");
-        valueSaved.innerHTML = `You will recieve notification when rates at <b>arbatunity</b> exceeds <b>${data.val().max_value}</b>`;
+        valueSaved.innerHTML = `You will recieve notification when profit % at <b>arbatunity</b> exceeds <b>${data.val().max_value}</b>`;
         var currentMaximum = data.val().max_value;
         window.b = currentMaximum;
     });
 
     firebase.database().ref('Ovex Max').on('child_added', function (data) {
         var valueSaved1 = document.getElementById("valueSaved1");
-        valueSaved1.innerHTML = `You will recieve notification when rates at <b>ovex</b> exceeds <b>${data.val().max_value}</b>`;
+        valueSaved1.innerHTML = `You will recieve notification when profit % at <b>ovex</b> exceeds <b>${data.val().max_value}</b>`;
         var currentMaximum1 = data.val().max_value;
         window.c = currentMaximum1;
     });
@@ -119,7 +117,7 @@ function notify1() {
         audio.play();
 
         Push.create("CRYPTO CURRENCY RATES", {
-                body: "Looks like the rates at arbatunity exceeds the maximum limit that you had set.",
+                body: "Looks like the profit % at arbatunity exceeds the limit that you had set.",
                 icon: 'others/bitcoin.png',
                 timeout: 6000,
                 onClick: function () {
@@ -136,7 +134,7 @@ function notify2() {
         audio.play();
        
         Push.create("CRYPTO CURRENCY RATES", {
-            body: "Looks like the rates at ovex exceeds the maximum limit that you had set.",
+            body: "Looks like the profit % at ovex exceeds the limit that you had set.",
             icon: 'others/bitcoin.png',
             timeout: 6000,
             onClick: function () {

@@ -27,10 +27,17 @@ img {
     display: flex;
     color: white;
     align-items: center;
-    letter-spacing: 2px;
-    font-family: Segoe UI;
     background-color: navy;
-    text-shadow: 2px 2px 2px white;
+}
+
+#heading-h1 {
+    height: 102px;
+    display: flex;
+    text-align: left; 
+    letter-spacing: 2px;
+    align-items: center;
+    font-family: Poppins;
+    text-shadow: 1px 1px 2px white;
 }
 
 #notifyMe {
@@ -63,12 +70,22 @@ img {
 #save {
     width: 90px;
     border: none;
-    padding: 8px;
+    padding: 6px;
     color: white;
     font-size: 18px;
     margin-top: 10px;
+    transition: 0.2s;
     border-radius: 2px;
+    border: 2px solid green;
     background-color: green;
+}
+
+#save:active {
+    zoom: 98%;
+}
+
+#save:focus {
+    outline: none;
 }
 
 #valueSaved, #valueSaved1 {
@@ -147,6 +164,11 @@ input::-webkit-inner-spin-button {
     margin: 0 auto;
     color: white;
     font-size: 20px;
+    border-radius: 3px;
     justify-content: center;
-    background-color: #333;
+    background-color: black;
+}
+
+#dltButton:active {
+    zoom: 98%;
 }
