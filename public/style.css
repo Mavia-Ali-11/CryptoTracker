@@ -33,9 +33,10 @@ img {
 #heading-h1 {
     height: 102px;
     display: flex;
+    padding-top: 8px;
     text-align: left; 
-    letter-spacing: 2px;
     align-items: center;
+    letter-spacing: 2px;
     font-family: Poppins;
     text-shadow: 1px 1px 2px white;
 }
@@ -50,6 +51,7 @@ img {
     margin-bottom: 70px;
     background-color: white;
     box-shadow: 0px 0px 10px lightgray;
+    border-bottom: 2px solid lightgray;
 }
 
 #label {
@@ -136,6 +138,12 @@ img {
     font-family: monospace;
     color: darkslategray;
     background-color: white;
+}
+
+#time {
+    float: right;
+    color: gray;
+    font-size: 12px;
 }
 
 div::-webkit-scrollbar {

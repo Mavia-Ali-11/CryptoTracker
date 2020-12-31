@@ -1,23 +1,3 @@
-function setValues() {
-    setInterval(function () {
-        var arbatunityValue = parseInt(Math.random() * 100);
-        var ovexValue = parseInt(Math.random() * 100);
-        addValue(arbatunityValue, ovexValue);
-    }, 5000);
-}
-
-setValues();
-
-function addValue(arbatunityValue, ovexValue) {
-    var key = firebase.database().ref('Crypto Values').push().key;
-    var data = {
-        arbatunity: arbatunityValue,
-        ovex: ovexValue,
-    }
-    firebase.database().ref('Crypto Values/' + key).set(data);
-    return data;
-}
-
 function saveValue() {
     var maxValue = document.getElementById("maxValue");
     if (maxValue.value == "") {
@@ -69,7 +49,7 @@ function addMax1(maxValue1) {
 function getValues() {
     firebase.database().ref('Crypto Values').on('child_added', function (data) {
         var values = document.getElementById("values");
-        values.innerHTML += `<li>Profit % ${data.val().arbatunity}</li><hr>`;
+        values.innerHTML += `<li>Profit % ${data.val().arbatunity}<span id="time">${data.val().current_time}</span></li><hr>`;
         values.scrollTop = values.scrollHeight;
         var currentValue = data.val().arbatunity;
         window.a = currentValue;
@@ -82,7 +62,7 @@ getValues();
 function getValues1() {
     firebase.database().ref('Crypto Values').on('child_added', function (data) {
         var values1 = document.getElementById("values1");
-        values1.innerHTML += `<li>Profit % ${data.val().ovex}</li><hr>`;
+        values1.innerHTML += `<li>Profit % ${data.val().ovex}<span id="time">${data.val().current_time}</span></li><hr>`;
         values1.scrollTop = values1.scrollHeight;
         var currentValue1 = data.val().ovex;
         window.d = currentValue1;

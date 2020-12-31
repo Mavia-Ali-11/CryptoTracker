@@ -8,17 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>Web Scraping</title>
+    <title>Crypto Tracker</title>
 </head>
 
 <body>
     <div class="container col-12 col-sm-12 col-md-12 col-lg-12 p-0">
         <div class="container">
             <div class="row p-3" id="heading">
-                <div class="col-5 col-md-5" style="text-align: right;">
+                <div class="col-5 col-md-4 col-lg-5" style="text-align: right;">
                     <a href="index.html"><img src="others/bitcoin.png" width="100" height="100"></a>
                 </div>
-                <div class="col-7 col-md-7" id="heading-h1">
+                <div class="col-7 col-md-7 col-lg-7" id="heading-h1">
                     <h1>CRYPTO TRACKER</h1>
                 </div>
             </div>
@@ -32,19 +32,18 @@
             </div>
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-4">
-                    <label for="maxValue" id="label">For Arbatunity:</label>
+                    <label for="maxValue" id="label">For Arbatunity:</label><br>
                     <input type="number" id="maxValue" placeholder="Enter max value">
                     <button onclick="saveValue()" id="save">Save</button><br><br>
                     <h4 id="valueSaved"></h4>
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-4">
-                    <label for="maxValue1" id="label">For Ovex:</label>
+                    <label for="maxValue1" id="label">For Ovex:</label><br>
                     <input type="number" id="maxValue1" placeholder="Enter max value">
                     <button onclick="saveValue1()" id="save">Save</button><br><br>
-                    <h4 id="valueSaved1"></h4>
+                    <h4 id="valueSaved1"></h4><br>
                 </div>
             </div>
-            <hr>
         </div>
 
         <div class="container">
@@ -73,7 +72,7 @@
             <button onclick="deleteValues()" id="dltButton">Destroy Data</button>
         </div>
 
-        <audio src="others/Tune1.mp3" id="audio" controls style="display: none;"></audio>
+        <audio src="others/Tune.mp3" id="audio" controls style="display: none;"></audio>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
