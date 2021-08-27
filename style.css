@@ -4,11 +4,12 @@
 }
 
 body {
-    margin: 0x;
+    margin: 0px;
     padding: 0px;
 }
 
 .container {
+    padding: 0px;
     min-width: 100%;
     background-color: ghostwhite;
 }
@@ -31,10 +32,9 @@ img {
 }
 
 #heading-h1 {
-    height: 102px;
     display: flex;
+    height: 102px;
     padding-top: 8px;
-    text-align: left; 
     align-items: center;
     letter-spacing: 2px;
     font-family: Poppins;
@@ -43,40 +43,32 @@ img {
 
 #notifyMe {
     color: navy;
+    display: flex;
+    align-items: center;
     font-family: Poppins;
-    margin: 50px 0px 10px 15px;
 }
 
 #inputs {
-    margin-bottom: 70px;
     background-color: white;
     box-shadow: 0px 0px 10px lightgray;
     border-bottom: 2px solid lightgray;
 }
 
-#label {
-    font-size: 25px;
-    color: darkgray;
-    font-weight: bold;
-    margin-right: 10px;
-    font-family: Calibri;
-}
-
 #maxValue, #maxValue1 {
+    width: 265px;
     padding: 5px;
-    width: 300px;
     font-size: 18px;
     border: 2px solid navy;
 }
 
 #save {
-    width: 90px;
     border: none;
-    padding: 6px;
+    padding: 5px;
     color: white;
     font-size: 18px;
     margin-top: 10px;
     transition: 0.2s;
+    width: fit-content;
     border-radius: 2px;
     border: 2px solid green;
     background-color: green;
@@ -102,12 +94,17 @@ img {
     font-family: Poppins;
 }
 
-#services div {
-    display: grid;
+#services {
+    min-width: 95%;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px lightgray;
 }
 
 #service-name {
-    height: 80px;
+    width: 50%;
+    height: 50px;
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: navy;
@@ -117,27 +114,25 @@ img {
 
 #service-name h2 {
     color: white;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: Calibri;
+    font-size: 18px;
+    margin: 10px auto;
+    text-align: center;
+    font-family: Poppins;
 }
 
-#service {
-    padding: 0px;
-    margin: 20px auto;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px lightgray;
+#values {
+    height: 400px;
+    background-color: white;
 }
 
-#values , #values1 {
-    width: 100%;
-    height: 500px;
-    padding: 50px;
+#values1, #values2 {
+    height: 400px;
     overflow: auto;
     font-size: 20px;
+    padding-top: 20px;
     font-family: monospace;
     color: darkslategray;
-    background-color: white;
+    border-right: 2px solid lightgray;
 }
 
 #time {
@@ -147,7 +142,7 @@ img {
 }
 
 div::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
   
 div::-webkit-scrollbar-track {
@@ -165,12 +160,12 @@ input::-webkit-inner-spin-button {
 }
 
 #dltButton {
-    width: 100%;
+    width: 90%;
     border: none;
     display: flex;
     padding: 15px;
-    margin: 0 auto;
     color: white;
+    margin: 0 auto;
     font-size: 20px;
     border-radius: 3px;
     justify-content: center;
